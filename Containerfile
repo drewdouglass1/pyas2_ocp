@@ -4,11 +4,11 @@ ADD requirements.txt /apps/
 
 RUN set -ex \
     && apk update \
-    && apk add --no-cache --virtual .build-deps postgresql-dev build-base \
+    && apk add --no-cache --virtual .build-deps build-base \
 #    && python -m venv /env \
     && pip install --upgrade pip \
     && pip install --no-cache-dir -r /apps/requirements.txt \
-    && apk add --virtual rundeps openssl-dev gcc libffi-dev musl-dev \
+    && apk add --virtual rundeps openssl-dev gcc postgresql-dev libffi-dev musl-dev \
     && apk del .build-deps
     
 WORKDIR /apps
