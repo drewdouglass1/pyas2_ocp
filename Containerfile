@@ -22,6 +22,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 #ENTRYPOINT ["/bin/sh", "/pyas2/config.sh"]
-CMD ["/usr/local/bin/python", "/apps/manage.py", "runserver", "0.0.0.0:8000"]
+#CMD ["/usr/local/bin/python", "/apps/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "pyas2_ocp.wsgi:application", "--bind", "0.0.0.0:8000"]
 
 EXPOSE 8000
